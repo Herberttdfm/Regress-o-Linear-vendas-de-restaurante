@@ -1,0 +1,42 @@
+# Importando a biblioteca pandas para manipulação de dados
+import pandas as pd
+
+# Carregando os dados do arquivo CSV
+# A função read_csv() é usada para ler um arquivo CSV e converter em um DataFrame do pandas
+#
+df = pd.read_csv('/content/drive/MyDrive/FIAP/Cloud Computing/Dados de Vendas - Página1.csv')
+
+# Exibindo as primeiras cinco linhas do DataFrame
+# O método head() é usado para obter uma visualização rápida das primeiras linhas do DataFrame (padrão é 5 linhas)
+df.head()
+
+!pip install numpy pandas scikit-learn matplotlib
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Definindo as variáveis independentes (X) - neste caso, selecionamos apenas a coluna 'Ano' do DataFrame.
+X = df[['Ano']]
+
+# Definindo a variável dependente (Y) - 'vendas' é o que queremos prever.
+y = df['vendas']
+
+model = LinearRegression()
+model.fit(X, y)  # Treinar o modelo com os dados
+
+# Pedir ao usuário para digitar o ano a ser previsto
+ano_a_prever = int(input("Digite o ano a ser previsto: "))
+
+# Criar um DataFrame para a previsão
+ano_df = pd.DataFrame({'Ano': [ano_a_prever]})
+
+# Prever as vendas
+vendas_previstas = model.predict(ano_df)
+print(f"Previsão de vendas para {ano_a_prever}: {vendas_previstas[0]}")
+# Visualização dos dados e da linha de regressão
+plt.scatter(X, y, color='blue')  # Pontos de dados reais
+plt.plot(X, model.predict(X), color='red')  # Linha de regressão
+plt.title('Regressão Linear das Vendas')
+plt.xlabel('Ano')
+plt.ylabel('Vendas')
+plt.show()
