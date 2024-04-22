@@ -4,7 +4,7 @@ import pandas as pd
 # Carregando os dados do arquivo CSV
 # A função read_csv() é usada para ler um arquivo CSV e converter em um DataFrame do pandas
 #
-df = pd.read_csv('/content/drive/MyDrive/FIAP/Cloud Computing/Dados de Vendas - Página1.csv')
+df = pd.read_csv('Dados de Vendas - Página1.csv')
 
 # Exibindo as primeiras cinco linhas do DataFrame
 # O método head() é usado para obter uma visualização rápida das primeiras linhas do DataFrame (padrão é 5 linhas)
